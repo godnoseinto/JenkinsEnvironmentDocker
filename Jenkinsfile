@@ -69,5 +69,18 @@ pipeline {
                 }
             }
         }
+        stage('Stress') {
+            steps {
+                sleep 5
+                dir("GatlingTest/"){
+                    sh 'mvn gatling:test -Dgatling.simulationClass=microservice.PingUsersSimulation'
+                }
+            }
+            post {
+                always {
+                    gatlingArchive()
+                }
+            }
+        }
     }
 }
