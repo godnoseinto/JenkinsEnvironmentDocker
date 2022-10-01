@@ -42,7 +42,7 @@ class PingUsersSimulation extends Simulation {
           session}}
 
   object BusinessLogic {
-    var headers_10 = Map("Content-Type" -> "application/json; charset=ISO-8859-1"
+    var headers_10 = Map("Content-Type" -> "application/json; charset=ISO-8859-1")
     val getPing =
       exec(http("GetPing")
         .get("/v1/service/microservicio/ping")
