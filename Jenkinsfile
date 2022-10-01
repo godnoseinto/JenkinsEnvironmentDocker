@@ -16,9 +16,7 @@ pipeline {
                 }
             }
         }
-    }
 
-    stages {
         stage('Analize') {
             steps {
                 dir("Curso-Microservicios/"){
@@ -36,9 +34,6 @@ pipeline {
                 }
             }
         }
-    }
-
-    stages {
         stage('Build') {
             steps {
                 dir("Curso-Microservicios/"){
@@ -46,9 +41,6 @@ pipeline {
                 }
             }
         }
-    }
-
-    stages {
         stage('Push Images') {
             steps {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_nexus', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
