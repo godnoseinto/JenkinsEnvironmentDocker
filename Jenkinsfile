@@ -21,7 +21,7 @@ pipeline {
             steps {
                 dir("Curso-Microservicios/"){
                     withSonarQubeEnv('SonarServer'){
-                        sh "mvn clean package \
+                        sh "mvn clean package sonar:sonar \
                             -Dsonar.projectKey=21_MyCompany_Microservice \
                             -Dsonar.projectName=21_MyCompany_Microservice \
                             -Dsonar.sources=src/main \
@@ -47,6 +47,7 @@ pipeline {
                     sh "docker login -u $USERNAME -p $PASSWORD 192.168.0.17:8083"
                     sh "docker tag microservicio:latest 192.168.0.17:8083/repository/docker-private/microservicio:latest"
                     sh "docker push 192.168.0.17:8083/repository/docker-private/microservicio:latest"
+                    //sh "docker run -d -p 8090:8090 192.168.0.17:8083/repository/docker-private/microservicio:latest"
                 }
             }
         }
